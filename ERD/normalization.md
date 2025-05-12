@@ -10,7 +10,7 @@ This document explains how normalization was applied to the Airbnb-like database
 
 - All attributes are atomic.
 - No repeating groups or arrays are used.
-- Example: `User.name = "John Doe"` (atomic), not `User.name = "John, Mike"`.
+- Example: `User.name = "Dawit Firew"` (atomic), not `User.name = "Dawit, Piter"`.
 
  The database meets 1NF.
 
