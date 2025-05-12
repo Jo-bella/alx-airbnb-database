@@ -17,4 +17,4 @@
 - One **Property** can have many **Availability** records.
 
 ## ER Diagram
-See `airbnb-erd.png` for the visual representation.
+See `erd-diagram.jpg` for the visual representation.
