@@ -1,4 +1,4 @@
--- Initial unoptimized query
+-- Initial query (unoptimized) with WHERE and AND
 EXPLAIN ANALYZE
 SELECT 
     b.id AS booking_id,
@@ -12,10 +12,11 @@ SELECT
 FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
-JOIN payments pay ON b.id = pay.booking_id;
+JOIN payments pay ON b.id = pay.booking_id
+WHERE b.created_at >= '2023-01-01'
+  AND u.country = 'USA';
 
--- Refactored version (improved)
--- Assume indexes already exist on: bookings.user_id, bookings.property_id, payments.booking_id
+-- Refactored query (optimized)
 EXPLAIN ANALYZE
 SELECT 
     b.id AS booking_id,
@@ -26,4 +27,6 @@ SELECT
 FROM bookings b
 LEFT JOIN users u ON b.user_id = u.id
 LEFT JOIN properties p ON b.property_id = p.id
-LEFT JOIN payments pay ON b.id = pay.booking_id;
+LEFT JOIN payments pay ON b.id = pay.booking_id
+WHERE b.created_at >= '2023-01-01'
+  AND u.country = 'USA';
